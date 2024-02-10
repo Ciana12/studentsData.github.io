@@ -25,25 +25,25 @@ document.addEventListener("DOMContentLoaded", function () {
         { name: "funelas, rub", address: "brgy 275 binondo manila", lat: 14.6046, lon: 120.9748 },
         { name: "Tapiador, James Orly", address: "brgy 281 binondo manila", lat: 14.6005, lon: 120.9686}
 
-        // Add more student data as needed
+       
     ];
 
-    // Initialize the map
+   
     const map = L.map('map').setView([14.6304, 120.9662], 12); // Default center at Manila
 
-    // Add a tile layer to the map
+    
     L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
         attribution: '© OpenStreetMap contributors'
     }).addTo(map);
 
-    // Add markers for each student
+
     students.forEach(student => {
         const marker = L.marker([student.lat, student.lon]).addTo(map);
         marker.bindPopup(student.name);
         marker.on('click', () => displayStudentDetails(student));
     });
 
-    // Function to display student details
+  
     function displayStudentDetails(student) {
         const detailsContainer = document.getElementById('student-details');
         detailsContainer.innerHTML = `<h2>${student.name}</h2>
